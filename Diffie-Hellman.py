@@ -31,18 +31,28 @@ class diffehelm:  #Alice: send in (a, g, p) where a = Bob's secret rand num
             self.p=p;
 
         self.A = (self.g**self.a) % self.p    ##Algorithm to generate A to send to Bob
-
-    def getSwapValue(self, a, g, p):
-
-        return (g**a) % p    ##Algorithm to generate A or B to send to Bob X Alice
+        print("Alice's secret number(a): %d" %self.a)
+        print("Shared Prime: %d" %self.p)
+        print("Shared randomly generated int value: %d" %self.g)
         
 
+
+
+    def getSwapValue(self, a, g, p):
+        print("Bob's secret number(a): %d" %a)
+        print("Shared Prime: %d" %p)
+        print("Shared randomly generated int value %d" %g)
+        B = (g**a) % p    ##Algorithm to generate A or B to send to Bob X Alice
+        print("B: ", end = "")
+        
+        return B
 
     def getA(self):
         return self.A
 
     def getg(self):
         return self.g
+    
 
     def getp(self):
         return self.p
@@ -59,6 +69,10 @@ class diffehelm:  #Alice: send in (a, g, p) where a = Bob's secret rand num
 
         else:
             key = self.B ** self.a % self.p
+            print("------------------------------------
+                  ")
+            print("Key: ", end = "")
+            print(key)
             f = Fernet(base64.urlsafe_b64encode(bytes(key)))
             encryptedMessage = f.encrypt(message)
         
@@ -82,6 +96,7 @@ if __name__ == '__main__':
 
     newer_diffehelm = diffehelm(4, 42, 1001)
     newer_diffehelm.setB(14)
+    print("A: ", end = "")
     print(newer_diffehelm.A)
     print(newer_diffehelm.getSwapValue(3, 42, 1001))
     print(newer_diffehelm.encrypt("I stole some shoes. The police are after me. I need a place to stay!"))
