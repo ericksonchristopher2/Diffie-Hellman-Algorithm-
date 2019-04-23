@@ -1,3 +1,9 @@
+###################################
+# Author(s): Christopher Erickson #
+#            Daniel Laden         #
+#            Josh Cullings        #
+# Date: 4/22/2019                 #
+###################################
 import random
 import cryptography
 from cryptography.fernet import Fernet
@@ -138,6 +144,13 @@ if __name__ == '__main__':
     encryptedMessage = newer_diffehelm.encrypt("I stole some shoes. The police are after me.....")
     print("Decrypted Message: ", end = "")
     print(newer_diffehelm.decrypt(encryptedMessage))
-
+    
+    
+################################################################################
+#                               Citations                                      #
+#https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange             #
+#https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/     #
+#https://cryptography.io/en/latest/hazmat/primitives/key-derivation-functions/ #
+################################################################################
 
     
